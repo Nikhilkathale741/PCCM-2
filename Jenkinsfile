@@ -28,7 +28,7 @@ pipeline {
         stage('Run Migrations') {
             steps {
                 script {
-                    sh 'docker-compose run web python manage.py migrate'
+                    sh 'docker-compose run web python PCCM/manage.py migrate'
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
         stage('Collect Static Files') {
             steps {
                 script {
-                    sh 'docker-compose run web python manage.py collectstatic --noinput'
+                    sh 'docker-compose run web python PCCM/manage.py collectstatic --noinput'
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'docker-compose run web python manage.py test'
+                    sh 'docker-compose run web python PCCM/manage.py test'
                 }
             }
         }
